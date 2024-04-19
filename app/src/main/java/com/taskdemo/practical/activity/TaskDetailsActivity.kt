@@ -122,7 +122,7 @@ class TaskDetailsActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.doneBtn -> {
                 GlobalScope.launch(Dispatchers.IO) {
-                    mTodoId?.let { db.todoDao().deleteTask(it) }
+                    mTodoId?.let { db.todoDao().finishTask(it) }
                     finish()
                 }
             }

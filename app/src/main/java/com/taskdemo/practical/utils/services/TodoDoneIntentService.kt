@@ -22,7 +22,7 @@ class TodoDoneIntentService : IntentService(TodoDoneIntentService::class.java.si
         val id = intent!!.getLongExtra("id", 0)
 
         GlobalScope.launch(Dispatchers.IO) {
-            db.todoDao().deleteTask(id)
+            db.todoDao().finishTask(id)
         }
         NotificationHelper(this@TodoDoneIntentService).dismissNotification(id.toInt())
         Toast.makeText(this@TodoDoneIntentService, "Todo Done.", Toast.LENGTH_SHORT).show()
